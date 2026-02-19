@@ -1,4 +1,4 @@
-# Usefull git commands
+# Useful git commands
 Update local branch list
 ```
 git remote update origin --prune
