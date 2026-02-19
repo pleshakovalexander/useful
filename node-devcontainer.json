@@ -1,0 +1,21 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node
+// based on https://code.visualstudio.com/remote/advancedcontainers/improve-performance
+// for installing packages use command npm i --no-audit --no-fund --verbose
+{
+  "name": "Node.js",
+  // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
+  //More info: https://aka.ms/dev-containers-non-root.
+  "remoteUser": "node",
+  "mounts": [
+    "source=${localWorkspaceFolderBasename}-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume"
+  ],
+  "postCreateCommand": "sudo chown node node_modules",
+  //helps run npm install inside container
+  "containerEnv": {
+    "NPM_CONFIG_MAXSOCKETS": "1",
+    "NPM_CONFIG_PREFER_ONLINE": "true",
+    "NPM_CONFIG_PREFER_OFFLINE": "false"
+  },
+}
